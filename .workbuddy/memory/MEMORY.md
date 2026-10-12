@@ -1,5 +1,18 @@
 # 项目长期记忆 — D:/信息系统（grain-shield-system）
 
+## Git 仓库结构（2026-10-12 起）
+
+- **唯一仓库 = `D:/信息系统` 根目录**，分支 `main`，远端 `https://github.com/flying114514/information-system`。
+- 仓库为**扁平结构**：`grain-shield-system/` 是普通目录（含全部前后端源码），
+  `grain-shield-system/.git` 已移出（不再是独立仓库/子模块，也已无 `.gitmodules`）。
+- 历史上根仓库曾把 `grain-shield-system` 记为 gitlink，导致远端仓库源码为空，**勿再退回此模式**。
+- 嵌套仓库备份：`C:/Users/15015/.workbuddy/binaries/_backup/grain-shield-system.git.bak` / `.git.original`。
+- 忽略规则靠 `grain-shield-system/.gitignore`（根目录无 .gitignore）；已忽略
+  `data/`、`*.lock.db`、`node_modules/`、`dist/`、`backend/target/`。
+- 推送前建议校验暂存区：`git diff --cached --numstat | awk '$1=="-"{print}'` 只应出现 `docs/screens/*.png`。
+- 推送时 PortableGit `etc/gitconfig` 可能留下 0 字节 `.lock` 并报 `could not lock config file`，
+  **不影响推送成功**，可删该锁文件。
+
 ## 环境约束（重要，会反复遇到）
 
 - 项目根：`D:/信息系统/grain-shield-system`（Spring Boot 3.3.5 + Vue 3/Vite 5）。
